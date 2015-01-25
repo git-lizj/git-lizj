@@ -62,4 +62,64 @@ git merge --no-ff <name> -m "备注"  合并某分支到当前分支  (普通模
 
 git branch -d <name> 删除分支
 
+git branch -D <name> 未被合并的分支，删除时会提示报错，需要强制删除
+
 git log --graph  可查看分支合并图
+
+git stash 可将工作现场临时储藏起来  
+
+git stash list 可查看储藏的工作现场
+
+git stash pop 恢复工作现场，同时删除stash
+
+git stash apply 恢复工作现场
+
+git stash apply stash@{0}  你可以多次stash，恢复的时候，先用git stash list查看，然后恢复指定的stash
+
+git stash drop 删除stash
+
+git remote -v  查看远程库信息
+
+--------------------------------------------------------------------------------------------------------------
+--多人协作
+
+1、首先 git push orgigin <branch-name>  推送自己的修改；
+
+2、如果推送失败，则因为远程分支比你的本地更新，需要先用 git pull 试图合并；
+
+3、如果合并有冲突，则解决冲突，并在本地提交；
+
+4、没有冲突或者解决掉冲突后，再用 git push origin <branch-name> 推送就能成功！
+
+5、如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，
+  用命令git branch --set-upstream <branch-name> origin/<branch-name>
+
+--------------------------------------------------------------------------------------------------------------
+--标签管理
+
+git tag <name>  用于新建一个标签，默认为HEAD，也可以指定一个commit id
+
+git tag <name> <commit_id>
+
+git tag  查看所有标签
+
+git show <tagname> 查看标签信息
+
+git tag -a <name> -m "备注" <commit_id>   建带有说明的标签，用-a指定标签名，-m指定说明文字
+如：git tag -a v0.1 -m "version 0.1 released" 3628164
+
+
+git tag -a <tagname> -m "blablabla..."   可以指定标签信息
+
+git tag -s <tagname> -m "blablabla..."  可以用PGP签名标签
+签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错
+
+git push origin <tagname>  可以推送一个本地标签
+
+git push origin --tags  可以推送全部未推送过的本地标签
+
+git tag -d <tagname>  可以删除一个本地标签
+
+git push origin :refs/tags/<tagname>  可以删除一个远程标签
+
+
