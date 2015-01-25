@@ -1,8 +1,8 @@
 git 命令大全
 
-git init  在当前目录创建git仓库
 
-git clone msa@197.3.84.27:BPM  从远程服务器克隆代码
+--------------------------------------------------------------------------------------------------------------
+-- 管理修改
 
 git add filename  将指定文件的修改提交到暂存区
 
@@ -26,11 +26,12 @@ git checkout -- filename  将指定文件在工作区的修改全部撤销
           
 git reset HEAD file  可以把暂存区的修改撤销掉（及撤销git add file动作）  
 
+--------------------------------------------------------------------------------------------------------------
+--远程仓库
 
+git init  在当前目录创建git仓库
 
-
-
-
+git clone msa@197.3.84.27:BPM  从远程服务器克隆代码
 
 gitHub 远程仓库地址：https://github.com/git-lizj/git-lizj.git
 
@@ -42,3 +43,23 @@ git push -u origin master  把当前分支master推送到远程
 还会把本地的master分支和远程的master分支关联起来，在以后的推送或者拉取时就可以简化命令。  
 
 git push origin master    把本地master分支的最新修改推送至GitHub      
+
+
+--------------------------------------------------------------------------------------------------------------
+--分支管理
+
+git branch  查看分支（当前分支前面标注有*）
+
+git branch <name>  创建分支
+
+git checkout <name>  切换分支
+
+git checkout -b <name>  创建+切换分支
+
+git merge <name> 合并某分支到当前分支  (Fast forward模式)
+
+git merge --no-ff <name> -m "备注"  合并某分支到当前分支  (普通模式)
+
+git branch -d <name> 删除分支
+
+git log --graph  可查看分支合并图
